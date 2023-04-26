@@ -8,6 +8,10 @@ public class Movement : MonoBehaviour
     Collider planeCollider;
     RaycastHit hit;
     Ray ray;
+    public MeshRenderer player;
+    public Material blue;
+    public Material red;
+    public Material green;
 
     // Start is called before the first frame update
     void Start()
@@ -30,4 +34,33 @@ public class Movement : MonoBehaviour
             }
         }
     }
+
+    private void OnTriggerEnter(Collider c)
+    {
+        switch(c.gameObject.name)
+        {
+            case "MakeBlue":
+                if(player.material != blue)
+                {
+                    player.material = blue;
+                    c.gameObject.SetActive(false);
+                }
+                break;
+            case "MakeGreen":
+                if (player.material != green)
+                {
+                    player.material = green;
+                    c.gameObject.SetActive(false);
+                }
+                break;
+            case "MakeRed":
+                if (player.material != red)
+                {
+                    player.material = red;
+                    c.gameObject.SetActive(false);
+                }
+                break;
+        }
+    }
+    
 }
